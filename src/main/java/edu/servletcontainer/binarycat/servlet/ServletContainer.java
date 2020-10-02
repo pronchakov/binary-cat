@@ -72,6 +72,14 @@ public class ServletContainer {
         String urlPattern = "/" + split[2];
 
         BinaryCatRequest httpServletRequest = new BinaryCatRequest();
+        for (int i = 1; i < request.size(); i++) {
+            String headerLine = request.get(i);
+            String[] splitHeader = headerLine.split(": ");
+            String headerName = splitHeader[0];
+            String headerValue = splitHeader[1];
+            httpServletRequest.addHeader(headerName, headerValue);
+        }
+
         BinaryCatResponse httpServletResponse = new BinaryCatResponse();
         HttpServlet servlet = servlets.get(urlPattern);
 
