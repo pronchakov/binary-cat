@@ -10,4 +10,4 @@ COPY --from=build /root/binary-cat/build/target/dependency ./dependency
 COPY --from=build /root/binary-cat/build/target/binary-cat.jar .
 COPY deploy ./deploy
 EXPOSE 8080
-ENTRYPOINT java -jar binary-cat.jar
+ENTRYPOINT java -XshowSettings:vm -jar binary-cat.jar
