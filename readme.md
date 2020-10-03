@@ -9,7 +9,7 @@ To run:
 2. Install docker if you don't have it
 3. Build docker image: ***docker build -t binary-cat .*** 
 4. Run docker container: ***docker run -it --rm -p 8080:8080 binary-cat***
-5. Use your broswer or curl to invoke servlet from your ***.war*** file 
+5. Use your broswer or curl to invoke servlet from your ***.war*** file. Servlet container is listening on port 8080. 
 
 Mission:
 1. Look at the code and understand what it does.
