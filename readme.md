@@ -8,7 +8,8 @@ To run:
 1. Place ***.war*** file to 'deploy' folder
 2. Install docker if you don't have it
 3. Build docker image: ***docker build -t binary-cat .*** 
-4. Run docker container: ***docker run -it --rm -p 8080:8080 binary-cat*** 
+4. Run docker container: ***docker run -it --rm -p 8080:8080 binary-cat***
+5. Use your broswer or curl to invoke servlet from your ***.war*** file 
 
 Mission:
 1. Look at the code and understand what it does.
