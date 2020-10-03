@@ -6,7 +6,7 @@
         </Appender>
     </Appenders>
     <Loggers>
-        <Logger name="binarycat" level="debug" additivity="false">
+        <Logger name="edu.servletcontainer.binarycat" level="debug" additivity="false">
             <AppenderRef ref="STDOUT"/>
         </Logger>
         <Root level="info">
