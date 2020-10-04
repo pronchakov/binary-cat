@@ -2,13 +2,13 @@
 
 This is a very simple implementation of Servlet container.
 
-####To run using IDE:
+###To run using IDE:
 
 Dependencies: ***IDE with maven, JDK 15***
 1. Open project in your IDE
 1. Run edu.servletcontainer.binarycat.Main class
 
-####To run using docker:
+###To run using docker:
 
 Dependencies: **docker**
 1. Place ***.war*** file to 'deploy' folder
