@@ -7,7 +7,7 @@ Dependencies: **docker**
 To run:
 1. Place ***.war*** file to 'deploy' folder
 1. Install docker if you don't have it
-1. Build application: ***docker run -it --rm --name binary-cat -v ~/.m2/repository:/root/.m2/repository -v "$(pwd)":/usr/src/binary-cat -w /usr/src/binary-cat maven:3.6.3-openjdk-15 mvn clean package***
+1. Build application: ***docker run -it --rm --name binary-cat --user $(id -u):$(id -g) -v ~/.m2/repository:/tmp/.m2/repository -v $(pwd):/usr/src/binary-cat -w /usr/src/binary-cat maven:3.6.3-openjdk-15 mvn clean package -Dmaven.repo.local=/tmp/.m2/repository***
 1. Build docker image: ***docker build -t binary-cat .*** 
 1. Run docker container: ***docker run -it --rm --cpus=1 --memory=64m -p 8080:8080 binary-cat***
 1. Use your browser or curl to invoke servlet from your ***.war*** file. Servlet container is listening on port 8080. 
