@@ -29,6 +29,7 @@ public class ServletContainer {
                 return name.endsWith(".war");
             }
         });
+        // TODO: Periodically look for new files in deploy folder to proccess
 
         log.info("Found {} applications ready for deploy:", deployFiles.length);
         for (File deployFile : deployFiles) {
@@ -48,19 +49,25 @@ public class ServletContainer {
                 className = className.replace('/', '.');
                 Class clazz = cl.loadClass(className);
                 if (clazz.getSuperclass().equals(HttpServlet.class)) {
+                    // TODO: Support web.xml settings for servlet along with WebServlet annotation
                     WebServlet annotation = (WebServlet) clazz.getAnnotation(WebServlet.class);
                     String name = annotation.name();
-                    String urlPattern = annotation.urlPatterns()[0];
+                    String urlPattern = annotation.urlPatterns()[0]; // TODO: Use all url patterns instead of first only
 
                     log.info("Registering servlet {}, with pattern {}", name, urlPattern);
                     HttpServlet o = (HttpServlet) clazz.getConstructor().newInstance();
                     servlets.put(urlPattern, o);
+                    // TODO: Separate servlets by applications using context path
+                    // TODO: Add check for servlets that already exist
                 }
             }
         }
     }
 
     public String processRequest(List<String> request) throws ServletException, IOException {
+
+        // TODO: This is not the best way to parse HTTP Request ever. You can redesign it completely.
+
         String resource = request.get(0).replace("GET ", "").replace(" HTTP/1.1", "");
         String[] split = resource.split("/");
         if (split.length != 3) {
@@ -68,7 +75,7 @@ public class ServletContainer {
             throw new ServletException();
         }
 
-        String contextPath = split[1];
+        String contextPath = split[1]; // TODO: Context path is never user used
         String urlPattern = "/" + split[2];
 
         BinaryCatRequest httpServletRequest = new BinaryCatRequest();
@@ -85,7 +92,7 @@ public class ServletContainer {
 
         if (servlet == null) {
             log.warn("There is no servlet for processing {}", urlPattern);
-            throw new ServletException();
+            throw new ServletException(); // TODO: Think about better way to handle exceptions at all
         }
 
         String servletClassName = servlet.getClass().getCanonicalName();

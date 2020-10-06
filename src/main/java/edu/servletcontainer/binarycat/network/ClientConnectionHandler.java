@@ -25,6 +25,11 @@ public class ClientConnectionHandler implements Runnable {
 
     @Override
     public void run() {
+
+        // TODO: Better resource creating and closing
+        // TODO: Exceptions handling
+        // TODO: HTTP errors propagation
+
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String firstLine = reader.readLine();

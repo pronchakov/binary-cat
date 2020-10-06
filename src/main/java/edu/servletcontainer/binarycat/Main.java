@@ -18,4 +18,6 @@ public class Main {
         NetworkServer server = new NetworkServer(servletContainer);
         server.startServer();
     }
+
+    //TODO: Stop server properly. Use shutdown hook.
 }

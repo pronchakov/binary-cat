@@ -29,7 +29,7 @@ public class NetworkServer {
                 log.info("");
                 log.info("New connection from client {}", socket.getRemoteSocketAddress().toString());
                 ClientConnectionHandler clientHandler = new ClientConnectionHandler(socket, servletContainer);
-                Thread clientThread = new Thread(clientHandler);
+                Thread clientThread = new Thread(clientHandler); // TODO: Use Thread pool instead of creating threads manually
                 clientThread.start();
             }
         } catch (IOException e) {
@@ -38,5 +38,7 @@ public class NetworkServer {
             log.error("Cannot create servlet container: {}", e.getMessage());
         }
     }
+
+    // TODO: Stop server and clear resources
 
 }
