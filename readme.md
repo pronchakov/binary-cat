@@ -22,3 +22,6 @@ Dependencies: **docker**
 1. Look at the code and understand what it does.
 1. The code is as simple and straightforward as it could be. It has a bugs, spaghetti code, wrong exceptions handling, code duplicates, and etc. Find them and fix them.
 1. As you may see, Binary Cat does not cover all Servlet specification :-) Improve it.
+
+#### Help:
+There is a *todo* branch with some recommendations for assignments. 
